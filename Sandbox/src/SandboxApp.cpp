@@ -1,14 +1,42 @@
 #include <Rose.h>
 
-class Sandbox : public Rose::Application {
+class ExampleLayer : public Rose::Layer
+{
+public:
+	ExampleLayer()
+		: Layer("Example")
+	{
+	}
 
-    public:
-		Sandbox() {
-		}
-		~Sandbox() {
-		}
+	void OnUpdate() override
+	{
+		RS_INFO("ExampleLayer::Update");
+	}
+
+	void OnEvent(Rose::Event& event) override
+	{
+		RS_TRACE("{0}", event);
+	}
 
 };
-Rose::Application* Rose::CreateApplication() {
+
+class Sandbox : public Rose::Application
+{
+public:
+	Sandbox()
+	{
+		PushLayer(new ExampleLayer());
+		PushOverlay(new Rose::ImGuiLayer());
+	}
+
+	~Sandbox()
+	{
+
+	}
+
+};
+
+Rose::Application* Rose::CreateApplication()
+{
 	return new Sandbox();
 }

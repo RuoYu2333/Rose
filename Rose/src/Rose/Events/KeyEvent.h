@@ -72,4 +72,5 @@ namespace Rose {
 
 		EVENT_CLASS_TYPE(KeyTyped)
 	};
+	
 }

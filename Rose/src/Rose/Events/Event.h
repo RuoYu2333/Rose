@@ -2,6 +2,7 @@
 
 #include "rspch.h"
 #include "Rose/Core.h"
+#include <spdlog/fmt/ostr.h>
 
 namespace Rose {
 
@@ -37,7 +38,7 @@ namespace Rose {
 
 	class ROSE_API Event
 	{
-		friend class EventDispatcher;
+		
 		// Make the constructor protected so that only derived classes can create events
 	public:
 		virtual ~Event() = default;
@@ -53,8 +54,6 @@ namespace Rose {
 		{
 			return GetCategoryFlags() & category;
 		}
-	protected:
-		bool m_Handled = false;
 	};
 
 	class EventDispatcher
@@ -68,11 +67,11 @@ namespace Rose {
 		{
 		}
 		template<typename T>
-		bool Dispatch(EventFn <T>& func)
+		bool Dispatch(EventFn <T> func)
 		{
 			if (m_Event.GetEventType() == T::GetStaticType())
 			{
-				m_Event.Handled |= func(static_cast<T&>(m_Event));
+				m_Event.Handled |= func(*(T*)&m_Event);
 				return true;
 			}
 			return false;
@@ -84,6 +83,10 @@ namespace Rose {
 	inline std::ostream& operator<<(std::ostream& os, const Event& e)
 	{
 		return os << e.ToString();
+	}
+
+	inline std::string format_as(const Event& e) {
+		return e.ToString();
 	}
 
 }

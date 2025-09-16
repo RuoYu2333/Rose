@@ -4,6 +4,8 @@
 
 #include <GLFW/glfw3.h>
 
+struct GLFWwindow;
+
 namespace Rose {
 
 	class WindowsWindow : public Window
@@ -21,6 +23,8 @@ namespace Rose {
 		inline void SetEventCallback(const EventCallbackFn& callback) override { m_Data.EventCallback = callback; }
 		void SetVSync(bool enabled) override;
 		bool IsVSync() const override;
+
+		inline virtual void* GetNativeWindow() const { return m_Window; }
 	private:
 		virtual void Init(const WindowProps& props);
 		virtual void Shutdown();

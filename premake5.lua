@@ -6,8 +6,12 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDir = {}
 IncludeDir["GLFW"] = "Rose/vendor/GLFW/include"
+IncludeDir["GLAD"] = "Rose/vendor/Glad/include"
+IncludeDir["ImGui"] = "Rose/vendor/imgui"
 
 include "Rose/vendor/GLFW"
+include "Rose/vendor/Glad"
+include "Rose/vendor/imgui"
 
 project "Rose"  
     location "Rose"
@@ -33,13 +37,17 @@ project "Rose"
     includedirs {
         "%{prj.name}/src",
         "%{prj.name}/vendor/spdlog/include",
-        "%{prj.name}/vendor/GLFW/include"
+        "%{prj.name}/vendor/GLFW/include",
+        "%{prj.name}/vendor/Glad/include",
+        "%{prj.name}/vendor/imgui"
     }
 
     links {
         "GLFW",
         "opengl32.lib",
-        "dwmapi.lib"
+        "Glad",
+        "dwmapi.lib",
+        "ImGui"
     }
 
     filter "system:windows"
@@ -50,7 +58,8 @@ project "Rose"
         defines {
             "RS_PLATFORM_WINDOWS",
             "RS_BUILD_DLL",
-            "_WINDLL"
+            "_WINDLL",
+            "GLFW_INCLUDE_NONE"
         }
 
 
@@ -60,14 +69,17 @@ project "Rose"
 
     filter "configurations:Debug"
         defines "RS_DEBUG" 
+        buildoptions "/MDd"
         symbols "On"
 
     filter "configurations:Release"
         defines "RS_RELEASE"
+        buildoptions "/MD"
         optimize "On"
 
     filter "configurations:Dist"
         defines "RS_DIST"
+        buildoptions "/MD"
         optimize "On"
 
 project "Sandbox"
@@ -105,12 +117,15 @@ project "Sandbox"
 
     filter "configurations:Debug"
         defines "RS_DEBUG"
+        buildoptions "/MDd"
         symbols "On"
 
     filter "configurations:Release"
         defines "RS_RELEASE"
+        buildoptions "/MD"
         optimize "On"
 
     filter "configurations:Dist"
         defines "RS_DIST"
+        buildoptions "/MD"
         optimize "On"
