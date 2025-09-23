@@ -36,7 +36,7 @@ namespace Rose {
 		layer->OnAttach();
 	}
 
-	void Application::OnEvent(Event& e)
+	void Application::OnEvent(Event& e) 
 	{
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
@@ -62,8 +62,6 @@ namespace Rose {
 			for(Layer* layer : m_LayerStack)
 				layer->OnUpdate();
 
-			auto [x, y] = Input::GetMousePosition();
-			RS_CORE_TRACE("{0},{1}", x, y);
 			m_Window->OnUpdate();
 		}
 	}

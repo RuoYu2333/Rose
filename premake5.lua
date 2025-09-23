@@ -8,10 +8,12 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "Rose/vendor/GLFW/include"
 IncludeDir["GLAD"] = "Rose/vendor/Glad/include"
 IncludeDir["ImGui"] = "Rose/vendor/imgui"
+IncludeDir["glm"] = "Rose/vendor/glm"
 
 include "Rose/vendor/GLFW"
 include "Rose/vendor/Glad"
 include "Rose/vendor/imgui"
+
 
 project "Rose"  
     location "Rose"
@@ -31,7 +33,9 @@ project "Rose"
         "%{prj.name}/src/**.h",
         "%{prj.name}/src/**.cpp",  
         "%{prj.name}/src/**.hpp",
-        "%{prj.name}/src/**.c"
+        "%{prj.name}/src/**.c",
+        "%{prj.name}/vendor/glm/glm/**.hpp",
+        "%{prj.name}/vendor/glm/glm/**.inl"
     }
 
     includedirs {
@@ -39,7 +43,8 @@ project "Rose"
         "%{prj.name}/vendor/spdlog/include",
         "%{prj.name}/vendor/GLFW/include",
         "%{prj.name}/vendor/Glad/include",
-        "%{prj.name}/vendor/imgui"
+        "%{prj.name}/vendor/imgui",
+        "%{prj.name}/vendor/glm"
     }
 
     links {
@@ -99,7 +104,8 @@ project "Sandbox"
 
     includedirs {
         "Rose/vendor/spdlog/include",
-        "Rose/src"
+        "Rose/src",
+        "Rose/vendor/glm"
     }
 
     links {
