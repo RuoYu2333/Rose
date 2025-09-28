@@ -602,6 +602,7 @@
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\Rose\Application.cpp" />
+    <ClCompile Include="src\Rose\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Rose\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Rose\Layer.cpp" />
     <ClCompile Include="src\Rose\LayerStack.cpp" />
