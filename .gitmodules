@@ -4,9 +4,6 @@
 [submodule "Rose/vendor/GLFW"]
 	path = Rose/vendor/GLFW
 	url = https://github.com/TheCherno/glfw
-[submodule "Rose/vendor/imgui"]
-	path = Rose/vendor/imgui
-	url = https://github.com/TheCherno/imgui
 [submodule "Rose/vendor/glm"]
 	path = Rose/vendor/glm
 	url = https://github.com/g-truc/glm.git
