@@ -1382,5 +1382,6 @@
     <ClCompile Include="src\rspch.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\Rose\ImGui\ImGuiBuild.cpp" />
   </ItemGroup>
 </Project>
