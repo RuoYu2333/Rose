@@ -5,6 +5,7 @@
 #include "Events/Event.h"
 #include "Rose/Events/ApplicationEvent.h"
 #include "Rose/LayerStack.h"
+#include "Rose/ImGui/ImGuiLayer.h"
 
 namespace Rose {
 
@@ -27,6 +28,7 @@ namespace Rose {
 		bool OnWindowClose(WindowCloseEvent& e);
 
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer *m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 

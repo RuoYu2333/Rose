@@ -1,5 +1,7 @@
 #include <Rose.h>
 
+#include "imgui/imgui.h"
+
 class ExampleLayer : public Rose::Layer
 {
 public:
@@ -15,6 +17,13 @@ public:
 		if (Rose::Input::IsKeyPressed(RS_KEY_TAB)) {
 			RS_INFO("TAB PRESSED");
 		}
+	}
+
+	virtual void OnImGuiRender() override
+	{
+		ImGui::Begin("Test");
+		ImGui::Text("Hello World");
+		ImGui::End();
 	}
 
 	void OnEvent(Rose::Event& event) override
@@ -55,7 +64,6 @@ public:
 	Sandbox()
 	{
 		PushLayer(new ExampleLayer());
-		PushOverlay(new Rose::ImGuiLayer());
 	}
 
 	~Sandbox()
