@@ -1,6 +1,12 @@
 workspace "Rose"
     architecture "x64"
-    configurations { "Debug", "Release" ,"Dist"}
+    startproject "Sandbox"
+
+    configurations {
+        "Debug",
+        "Release",
+        "Dist"
+    }
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
@@ -17,11 +23,10 @@ include "Rose/vendor/imgui"
 
 project "Rose"  
     location "Rose"
-    kind "SharedLib"
+    kind "StaticLib"
     language "C++"
-
-    staticruntime "off"
-    runtime "Debug"
+    cppdialect "C++20"
+    staticruntime "on"
     
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -36,6 +41,9 @@ project "Rose"
         "%{prj.name}/src/**.c",
         "%{prj.name}/vendor/glm/glm/**.hpp",
         "%{prj.name}/vendor/glm/glm/**.inl"
+    }
+    defines {
+        "_CRT_SECURE_NO_WARNINGS"
     }
 
     includedirs {
@@ -56,8 +64,6 @@ project "Rose"
     }
 
     filter "system:windows"
-        cppdialect "C++20"
-        staticruntime "On"
         systemversion "latest"
 
         defines {
@@ -68,29 +74,30 @@ project "Rose"
         }
 
 
-        postbuildcommands {
-            ("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
-        }
-
     filter "configurations:Debug"
-        defines "RS_DEBUG" 
+        defines "RS_DEBUG"
+        runtime "Debug"
         buildoptions "/MDd"
-        symbols "On"
+        symbols "on"
 
     filter "configurations:Release"
         defines "RS_RELEASE"
+        runtime "Release"
         buildoptions "/MD"
-        optimize "On"
+        optimize "on"
 
     filter "configurations:Dist"
         defines "RS_DIST"
+        runtime "Release"
         buildoptions "/MD"
-        optimize "On"
+        optimize "on"
 
 project "Sandbox"
     location "Sandbox"
     kind "ConsoleApp"
     language "C++"
+    cppdialect "C++20"
+    staticruntime "on"
 
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -114,25 +121,27 @@ project "Sandbox"
     }
 
     filter "system:windows"
-        cppdialect "C++20"
-        staticruntime "On"
         systemversion "latest"
 
-        defines {
+        defines { 
             "RS_PLATFORM_WINDOWS",
         }
 
     filter "configurations:Debug"
         defines "RS_DEBUG"
+        runtime "Debug"
         buildoptions "/MDd"
-        symbols "On"
+        symbols "on"
 
     filter "configurations:Release"
         defines "RS_RELEASE"
+        runtime "Release"
         buildoptions "/MD"
-        optimize "On"
+        optimize "on"
 
     filter "configurations:Dist"
         defines "RS_DIST"
+        runtime "Release"
         buildoptions "/MD"
-        optimize "On"
+        optimize "on"
+ 

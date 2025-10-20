@@ -1,8 +1,11 @@
 #pragma once
 
 #include "Rose/Window.h"
+#include "Rose/Renderer/GraphicsContext.h"
 
 #include <GLFW/glfw3.h>
+
+
 
 struct GLFWwindow;
 
@@ -30,6 +33,7 @@ namespace Rose {
 		virtual void Shutdown();
 	private:
 		GLFWwindow* m_Window;
+		GraphicsContext* m_Context;
 
 		struct WindowData
 		{

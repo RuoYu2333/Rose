@@ -1,23 +1,27 @@
-#pragma once
+ #pragma once
 
 #ifdef RS_PLATFORM_WINDOWS
+#if RS_DYNAMIC_LINK
 	#ifdef RS_BUILD_DLL
 		#define ROSE_API __declspec(dllexport)
 	#else 
 		#define ROSE_API __declspec(dllimport)
 	#endif
+#else 
+	#define ROSE_API
+#endif
 #else
     #error Rose only supports Windows!
 
 #endif
 
+#ifdef RS_DEBUG	
+	#define RS_ENABLE_ASSERTS
+#endif
+
 #ifdef RS_ENABLE_ASSERTS
-#define RS_ASSERT(x, ...) {
-	if(!(x)) { HZ_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); 
-	} }
-#define RS_CORE_ASSERT(x, ...) { 
-	if(!(x)) {
-	HZ_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+	#define RS_ASSERT(x, ...) {if(!(x)) { RS_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+#define RS_CORE_ASSERT(x, ...) { if(!(x)) { RS_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
 #else
 	#define RS_ASSERT(x, ...)
 	#define RS_CORE_ASSERT(x, ...)
