@@ -1,20 +1,38 @@
 #pragma once
 #include <string>
 #include <glm/glm.hpp>
+#include <unordered_map>
 namespace Rose {
 	class Shader
 	{
 	public:
-		Shader(const std::string& vertexSrc, const std::string& fragmentSrc);
-		~Shader();
+		
+		virtual ~Shader() = default;
 
-		void Bind() const;
-		void Unbind() const;
-		// Set uniforms
-		void UploadUniformMat4(const std::string& name, const glm::mat4& matrix);
+		virtual void Bind() const = 0;
+		virtual void Unbind() const = 0;
+		
+		virtual const std::string& GetName() const = 0;
+
+		static Ref<Shader> Create(const std::string& filepath);
+		static Ref<Shader> Create(const std::string& name, const std::string& vertexSrc, const std::string& fragmentSrc);
+
+	};
+	class ShaderLab
+	{
+	public:
+		ShaderLab();
+		~ShaderLab();
+		Ref<Shader> Load(const std::string& filepath);
+		Ref<Shader> Load(const std::string& name, const std::string& filepath);	
+		Ref<Shader> Get(const std::string& name);
+		void Add(const Ref<Shader>& shader);
+		void Add(const std::string& name, const Ref<Shader>& shader);
+		bool isExits(const std::string& name) const {
+			return m_Shaders.find(name) != m_Shaders.end();
+		}
 	private:
-		uint32_t m_RendererID;
-
+		std::unordered_map<std::string, Ref<Shader>> m_Shaders;
 
 	};
 

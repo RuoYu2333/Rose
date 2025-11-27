@@ -2,6 +2,7 @@
 
 #include "Rose/Core.h"
 #include "Rose/Events/Event.h"
+#include "Rose/Core/TimeStep.h"
 
 namespace Rose {
 
@@ -14,7 +15,7 @@ namespace Rose {
 
 		virtual void OnAttach() {}
 		virtual void OnDetach() {}
-		virtual void OnUpdate() {}
+		virtual void OnUpdate(TimeStep timestep) {}
 		virtual void OnImGuiRender() {}
 		virtual void OnEvent(Event& event) {}
 

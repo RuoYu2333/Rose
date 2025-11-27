@@ -1,5 +1,5 @@
  #pragma once
-
+#include <memory>
 #ifdef RS_PLATFORM_WINDOWS
 #if RS_DYNAMIC_LINK
 	#ifdef RS_BUILD_DLL
@@ -31,3 +31,13 @@
 #define BIT(x) (1 << x)
 
 #define RS_BIND_EVENT_FN(x) std::bind(&x, this, std::placeholders::_1)
+namespace Rose {
+
+	template<typename T>
+	using Scope = std::unique_ptr<T>;
+	
+	template<typename T>
+	using Ref = std::shared_ptr<T>;
+
+
+}

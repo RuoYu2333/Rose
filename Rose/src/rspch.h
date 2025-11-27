@@ -7,6 +7,7 @@
 #include <functional>
 #include <utility>
 #include <algorithm>
+#include <array>
 #include <unordered_map>
 #include <unordered_set>
 #include <sstream>

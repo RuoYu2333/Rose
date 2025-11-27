@@ -6,6 +6,10 @@ namespace Rose
 {
 	class RenderCommand {
 	public:
+		inline static void Init() 
+		{
+			s_RendererAPI->Init();
+		}
 		inline static void Clear()
 		{
 			s_RendererAPI->Clear();
@@ -14,7 +18,7 @@ namespace Rose
 		{
 			s_RendererAPI->SetClearColor(color);
 		}
-		inline static void DrawIndexed(const std::shared_ptr<VertexArray>& vertexArray)
+		inline static void DrawIndexed(const Rose::Ref<VertexArray>& vertexArray)
 		{
 			s_RendererAPI->DrawIndexed(vertexArray);
 		}

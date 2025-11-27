@@ -41,7 +41,7 @@ namespace Rose {
 	{
 		glBindVertexArray(0);
 	}
-	void OpenGLVertexArray::AddVertexBuffer(const std::shared_ptr<VertexBuffer>& vertexBuffer) 
+	void OpenGLVertexArray::AddVertexBuffer(const Rose::Ref<VertexBuffer>& vertexBuffer) 
 	{	
 		RS_CORE_ASSERT(vertexBuffer->GetLayout().GetElements().size(), "Vertex Buffer has no layout!");
 		glBindVertexArray(m_RendererID);
@@ -61,7 +61,7 @@ namespace Rose {
 		}
 		m_VertexBuffers.push_back(vertexBuffer);
 	}
-	void OpenGLVertexArray::SetIndexBuffer(const std::shared_ptr<IndexBuffer>& indexBuffer) 
+	void OpenGLVertexArray::SetIndexBuffer(const Rose::Ref<IndexBuffer>& indexBuffer) 
 	{
 		glBindVertexArray(m_RendererID);
 		indexBuffer->Bind();

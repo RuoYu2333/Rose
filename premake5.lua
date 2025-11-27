@@ -15,6 +15,7 @@ IncludeDir["GLFW"] = "Rose/vendor/GLFW/include"
 IncludeDir["GLAD"] = "Rose/vendor/Glad/include"
 IncludeDir["ImGui"] = "Rose/vendor/imgui"
 IncludeDir["glm"] = "Rose/vendor/glm"
+IncludeDir["stb_image"] = "Rose/vendor/STB"
 
 include "Rose/vendor/GLFW"
 include "Rose/vendor/Glad"
@@ -40,7 +41,9 @@ project "Rose"
         "%{prj.name}/src/**.hpp",
         "%{prj.name}/src/**.c",
         "%{prj.name}/vendor/glm/glm/**.hpp",
-        "%{prj.name}/vendor/glm/glm/**.inl"
+        "%{prj.name}/vendor/glm/glm/**.inl",
+        "%{prj.name}/vendor/STB/**.h",
+        "%{prj.name}/vendor/STB/**.cpp"
     }
     defines {
         "_CRT_SECURE_NO_WARNINGS"
@@ -53,6 +56,7 @@ project "Rose"
         "%{prj.name}/vendor/Glad/include",
         "%{prj.name}/vendor/imgui",
         "%{prj.name}/vendor/glm",
+        "%{prj.name}/vendor/STB"
     }
 
     links {

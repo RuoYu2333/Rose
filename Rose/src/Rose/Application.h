@@ -10,6 +10,7 @@
 #include "Rose/Renderer/Buffer.h"
 #include "Rose/Renderer/VertexArray.h"
 #include "Rose/Camera/Camera.h"
+#include "Rose/Core/TimeStep.h"
 namespace Rose {
 
 	class ROSE_API Application
@@ -29,20 +30,22 @@ namespace Rose {
 		inline static Application& Get() { return *s_Instance; }
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
-
+	private:
 		std::unique_ptr<Window> m_Window;
 		ImGuiLayer *m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 
-		std::shared_ptr<Shader> m_Shader;
-		std::shared_ptr<VertexArray> m_VertexArray;
+		Rose::Ref<Shader> m_Shader;
+		Rose::Ref<VertexArray> m_VertexArray;
 
-		std::shared_ptr<VertexArray> m_SquareVertexArray;
-		std::shared_ptr<Shader> m_BlueShader;
+		Rose::Ref<VertexArray> m_SquareVertexArray;
+		Rose::Ref<Shader> m_BlueShader;
 
-		std::shared_ptr<Camera> m_Camera;
+		Rose::Ref<Camera> m_Camera;
 
+		TimeStep m_TimeStep;
+		float m_LastFrameTime = 0.0f;
 
 	private:
 		static Application* s_Instance;

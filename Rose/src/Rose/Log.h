@@ -11,11 +11,11 @@ namespace Rose
 	public:
 		static void Init();
 		//inline可以被多个源文件包含，shared_ptr 将生命周期延长至调用者释放
-		inline static std::shared_ptr<spdlog::logger>& GetCoreLogger() { return s_CoreLogger; }
-		inline static std::shared_ptr<spdlog::logger>& GetClientLogger() { return s_ClientLogger; }
+		inline static Rose::Ref<spdlog::logger>& GetCoreLogger() { return s_CoreLogger; }
+		inline static Rose::Ref<spdlog::logger>& GetClientLogger() { return s_ClientLogger; }
 	private:
-		static std::shared_ptr<spdlog::logger> s_CoreLogger;
-		static std::shared_ptr<spdlog::logger> s_ClientLogger;
+		static Rose::Ref<spdlog::logger> s_CoreLogger;
+		static Rose::Ref<spdlog::logger> s_ClientLogger;
 	
 	
 	};

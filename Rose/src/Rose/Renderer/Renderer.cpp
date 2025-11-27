@@ -2,9 +2,16 @@
 #include <glad/glad.h>
 #include "Renderer.h"
 
+#include "Platform/OpenGL/OpenGLShader.h"
+
 namespace Rose
 {
 	Renderer::SceneData* Renderer::m_SceneData = new Renderer::SceneData;
+
+	void Renderer::Init()
+	{
+		RenderCommand::Init();
+	}
 
 	void Renderer::BeginScene(Camera& camera)
 	{
@@ -13,10 +20,12 @@ namespace Rose
 	void Renderer::EndScene()
 	{
 	}
-	void Renderer::Submit(const std::shared_ptr<VertexArray>& vertexArray, const std::shared_ptr<Shader> shader)
+	void Renderer::Submit(const Rose::Ref<VertexArray>& vertexArray, const Rose::Ref<Shader> shader,glm::mat4 trans)
 	{
 		shader->Bind();
-		shader->UploadUniformMat4("u_ViewProjection", m_SceneData->ViewProjectionMatrix);
+		std::dynamic_pointer_cast<OpenGLShader> (shader)->UploadUniformMat4("u_ViewProjection", m_SceneData->ViewProjectionMatrix);
+		std::dynamic_pointer_cast<OpenGLShader> (shader)->UploadUniformMat4("u_Transform", trans);
+
 		vertexArray->Bind();
 		RenderCommand::DrawIndexed(vertexArray);
 	}
