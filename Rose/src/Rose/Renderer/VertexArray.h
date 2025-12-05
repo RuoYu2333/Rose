@@ -17,7 +17,7 @@ namespace Rose {
 		virtual const std::vector<Rose::Ref<VertexBuffer>>& GetVertexBuffers() const = 0;
 		virtual const Rose::Ref<IndexBuffer>& GetIndexBuffer() const = 0;
 
-		static VertexArray* Create();
+		static Ref<VertexArray> Create();
 	};
 
 

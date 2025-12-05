@@ -1,4 +1,6 @@
 #pragma once
+#include "Application.h"
+#include "Log.h"
 
 #ifdef RS_PLATFORM_WINDOWS
 

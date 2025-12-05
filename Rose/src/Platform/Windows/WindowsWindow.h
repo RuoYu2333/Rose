@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Rose/Window.h"
+#include "Rose/Core/Window.h"
 #include "Rose/Renderer/GraphicsContext.h"
 
 #include <GLFW/glfw3.h>
@@ -28,6 +28,8 @@ namespace Rose {
 		bool IsVSync() const override;
 
 		inline virtual void* GetNativeWindow() const { return m_Window; }
+
+		void GetFramebufferSize(uint32_t& width, uint32_t& height) const override;
 	private:
 		virtual void Init(const WindowProps& props);
 		virtual void Shutdown();
@@ -48,3 +50,4 @@ namespace Rose {
 	};
 
 }
+

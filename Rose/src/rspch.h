@@ -12,7 +12,7 @@
 #include <unordered_set>
 #include <sstream>
 
-#include "Rose/Log.h"
+#include "Rose/Core/Log.h"
 
 #ifdef RS_PLATFORM_WINDOWS
 	#include <Windows.h>

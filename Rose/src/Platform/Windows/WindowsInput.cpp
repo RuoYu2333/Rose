@@ -2,7 +2,7 @@
 
 #include "WindowsInput.h"
 #include <GLFW/glfw3.h>
-#include "Rose/Application.h"
+#include "Rose/Core/Application.h"
 
 namespace Rose
 {

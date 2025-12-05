@@ -1,11 +1,11 @@
 #pragma once
 #include "Rose/Camera/Camera.h"
-#include "Rose/Input.h"
+#include "Rose/Core/Input.h"
 
 #include "Rose/Events/MouseEvent.h"
 #include "Rose/Events/ApplicationEvent.h"
 #include <glm/gtc/matrix_transform.hpp>
-#include "Rose/KeyCodes.h"
+#include "Rose/Core/KeyCodes.h"
 #include "Rose/Core/TimeStep.h"
 
 namespace Rose {
@@ -18,6 +18,8 @@ namespace Rose {
 		inline class Camera& GetCamera() { return m_Camera; }
 		inline const class Camera& GetCamera() const { return m_Camera; }
 		void Resize(float width, float height);
+		void SetZoomLevel(float level) { m_ZoomLevel = level; }
+		void GetZoomLevel(float level)  { m_ZoomLevel = level; }
 	private:
 		bool OnMouseScrolled(class MouseScrolledEvent& e);
 		bool OnWindowResized(class WindowResizeEvent& e);

@@ -1,10 +1,11 @@
 #include <Rose.h>
-
+#include "Sandbox2D.h"
 #include "imgui/imgui.h"
-#include <Rose/Input.h>
+#include "Rose/Core/Input.h"
 #include <glm/gtc/matrix_transform.hpp>
 #include "Platform/OpenGL/OpenGLShader.h"
 #include <glm/gtc/type_ptr.hpp>
+#include <Rose/Core/EntryPoint.h>
 
 class ExampleLayer : public Rose::Layer
 {
@@ -12,7 +13,7 @@ public:
 	ExampleLayer()
 		: Layer("Example"), m_CameraController(1280.0f/720.0f,true)
 	{
-		m_VertexArray.reset(Rose::VertexArray::Create());
+		m_VertexArray = Rose::VertexArray::Create();
 
 		float vertices[3 * 7] = {
 			-0.5f, -0.5f, 0.0f, 0.8f, 0.2f, 0.8f, 1.0f,
@@ -34,7 +35,7 @@ public:
 		indexBuffer.reset(Rose::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
-		m_SquareVertexArray.reset(Rose::VertexArray::Create());
+		m_SquareVertexArray= Rose::VertexArray::Create();
 
 		float squareVertices[5 * 4] = {
 			-0.5f, -0.5f, 0.0f,0.0f,0.0f,
@@ -187,33 +188,6 @@ public:
 	{
 		m_CameraController.OnEvent(event);
 		Rose::EventDispatcher dispatcher(event);
-		dispatcher.Dispatch<Rose::KeyPressedEvent>([this](Rose::KeyPressedEvent& e) {
-			/*RS_INFO("KeyPressedEvent: {0}", e.GetKeyCode());
-			if(e.GetKeyCode() == RS_KEY_LEFT)
-			{
-				m_CameraPosition.x -= m_CameraSpeed;
-			}
-			else if (e.GetKeyCode() == RS_KEY_RIGHT)
-			{
-				m_CameraPosition.x += m_CameraSpeed;
-			}
-			else if (e.GetKeyCode() == RS_KEY_UP)
-			{
-				m_CameraPosition.y += m_CameraSpeed;
-			}
-			else if (e.GetKeyCode() == RS_KEY_DOWN)
-			{
-				m_CameraPosition.y -= m_CameraSpeed;
-			}
-			else if(e.GetKeyCode()==RS_KEY_C)
-			{
-				m_CameraRotation += (45.0f*m_CameraRotateSpeed)/360.f;
-			}
-			m_Camera->SetPosition(m_CameraPosition);
-			m_Camera->SetRotation(m_CameraRotation);*/
-			return false;
-			});
-		
 	}
 private:
 	Rose::ShaderLab m_ShaderLab;
@@ -242,7 +216,9 @@ class Sandbox : public Rose::Application
 public:
 	Sandbox()
 	{
-		PushLayer(new ExampleLayer());
+		//PushLayer(new ExampleLayer());
+		PushLayer(new SandBox2D());
+		
 	}
 
 	~Sandbox()

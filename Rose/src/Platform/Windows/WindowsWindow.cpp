@@ -30,7 +30,13 @@ namespace Rose {
 	{
 		Shutdown();
 	}
-
+	void WindowsWindow::GetFramebufferSize(uint32_t& width, uint32_t& height) const
+	{
+		int w, h;
+		glfwGetFramebufferSize(m_Window, &w, &h);
+		width = static_cast<uint32_t>(w);
+		height = static_cast<uint32_t>(h);
+	}
 	void WindowsWindow::Init(const WindowProps& props)
 	{
 		m_Data.Title = props.Title;

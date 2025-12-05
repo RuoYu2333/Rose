@@ -1,26 +1,25 @@
 #pragma once
 #include "Rose/Core/TimeStep.h"
 // for use by Rose applications
-#include "Rose/Application.h"
+#include "Rose/Core/Application.h"
 
 
 //Log
-#include "Rose/Log.h"
+#include "Rose/Core/Log.h"
 //Entry Point
-#include "Rose/EntryPoint.h"
 
 
 //Layer
-#include "Rose/Layer.h"
+#include "Rose/Core/Layer.h"
 
 
 #include "Rose/ImGui/ImGuiLayer.h"
 
-#include "Rose/Input.h"
+#include "Rose/Core/Input.h"
 
-#include "Rose/MouseButtonCodes.h"
+#include "Rose/Core/MouseButtonCodes.h"
 
-#include "Rose/KeyCodes.h"
+#include "Rose/Core/KeyCodes.h"
 //Renderer
 #include "Rose/Camera/Camera.h"
 #include "Rose/Camera/CameraController.h"
@@ -29,6 +28,7 @@
 #include "Rose/Renderer/VertexArray.h"
 #include "Rose/Renderer/RenderCommand.h"
 #include "Rose/Renderer/Renderer.h"
+#include "Rose/Renderer/Renderer2D.h"
 #include "Rose/Renderer/Buffer.h"
 
 

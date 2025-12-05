@@ -1,10 +1,10 @@
 #pragma once
 
-#include "Core.h"
+#include "Rose/Core.h"
 #include "Window.h"
-#include "Events/Event.h"
+#include "Rose/Events/Event.h"
 #include "Rose/Events/ApplicationEvent.h"
-#include "Rose/LayerStack.h"
+#include "Rose/Core/LayerStack.h"
 #include "Rose/ImGui/ImGuiLayer.h"
 #include "Rose/Renderer/Shader.h"
 #include "Rose/Renderer/Buffer.h"
@@ -30,10 +30,12 @@ namespace Rose {
 		inline static Application& Get() { return *s_Instance; }
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
+		bool OnWindowResize(WindowResizeEvent& e);
 	private:
-		std::unique_ptr<Window> m_Window;
+		Rose::Scope<Window> m_Window;
 		ImGuiLayer *m_ImGuiLayer;
 		bool m_Running = true;
+		bool m_Minimized = false;
 		LayerStack m_LayerStack;
 
 		Rose::Ref<Shader> m_Shader;

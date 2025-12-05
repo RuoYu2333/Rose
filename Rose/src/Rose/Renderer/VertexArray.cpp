@@ -5,7 +5,7 @@
 #include "Platform/OpenGL/OpenGLVertexArray.h"
 
 namespace Rose {
-    VertexArray* Rose::VertexArray::Create()
+    Ref<VertexArray> Rose::VertexArray::Create()
     {
 		switch (Renderer::GetAPI())
 		{
@@ -15,7 +15,7 @@ namespace Rose {
 			RS_CORE_ASSERT(false, "RendererAPI::API::None is currently not supported!");
 			return nullptr;
 		case RendererAPI::API::OpenGL:
-			return new OpenGLVertexArray();
+			return std::make_shared<OpenGLVertexArray>();
 		}
 		RS_CORE_ASSERT(false, "Unknown RendererAPI!");
 		return nullptr;

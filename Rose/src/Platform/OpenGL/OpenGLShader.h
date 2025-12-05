@@ -17,6 +17,8 @@ namespace Rose {
 		virtual void Bind() const override;
 		virtual void Unbind() const override;
 
+		virtual void SetInt(const std::string& name, int value)override;
+
 		const std::string& GetName() const override { return m_Name; }
 
 		// Set uniforms
@@ -30,7 +32,11 @@ namespace Rose {
 		void UploadUniformFloat2(const std::string& name, const glm::vec2& vector) const;
 		void UploadUniformFloat3(const std::string& name, const glm::vec3& vector) const;
 		void UploadUniformFloat4(const std::string& name, const glm::vec4& vector) const;
-	
+		
+		void SetFloat3(const std::string& name, const glm::vec3& value) override;
+		void SetFloat4(const std::string& name, const glm::vec4& value) override;
+		void SetMat4(const std::string& name, const glm::mat4& matrix) override;
+
 	private:
 		void Compile(const std::unordered_map<GLenum, std::string>& shaderSources);
 		std::unordered_map<GLenum,std::string> ParseShader(const std::string& source);

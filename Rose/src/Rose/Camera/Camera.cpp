@@ -14,6 +14,19 @@ namespace Rose
 		m_ProjectionMatrix = glm::ortho(left, right, bottom, top, -1.0f, 1.0f);
 		m_ViewProjectionMatrix = m_ProjectionMatrix * m_ViewMatrix;
 	}
+	void Camera::SetViewportSize(float width, float height)
+	{
+		float aspectRatio = width / height;
+		float orthoHeight = 10.0f;
+		float orthoWidth = orthoHeight * aspectRatio;
+		SetProjection(-orthoWidth / 2.0f, orthoWidth / 2.0f, -orthoHeight / 2.0f, orthoHeight / 2.0f);
+	}
+	void Camera::SetAspectRatio(float aspectRatio)
+	{
+		float orthoHeight = 10.0f;
+		float orthoWidth = orthoHeight * aspectRatio;
+		SetProjection(-orthoWidth / 2.0f, orthoWidth / 2.0f, -orthoHeight / 2.0f, orthoHeight / 2.0f);
+	}
 	void Camera::RecalculateViewMatrix()
 	{
 		glm::mat4 transform = glm::translate(glm::mat4(1.0f), m_Position) *

@@ -84,20 +84,44 @@
     <ClInclude Include="src\Rose.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\Rose\Application.h">
-      <Filter>src\Rose</Filter>
-    </ClInclude>
     <ClInclude Include="src\Rose\Camera\Camera.h">
+      <Filter>src\Rose\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rose\Camera\CameraController.h">
       <Filter>src\Rose\Camera</Filter>
     </ClInclude>
     <ClInclude Include="src\Rose\Core.h">
       <Filter>src\Rose</Filter>
     </ClInclude>
+    <ClInclude Include="src\Rose\Core\Application.h">
+      <Filter>src\Rose\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rose\Core\EntryPoint.h">
+      <Filter>src\Rose\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rose\Core\Input.h">
+      <Filter>src\Rose\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rose\Core\KeyCodes.h">
+      <Filter>src\Rose\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rose\Core\Layer.h">
+      <Filter>src\Rose\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rose\Core\LayerStack.h">
+      <Filter>src\Rose\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rose\Core\Log.h">
+      <Filter>src\Rose\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rose\Core\MouseButtonCodes.h">
+      <Filter>src\Rose\Core</Filter>
+    </ClInclude>
     <ClInclude Include="src\Rose\Core\TimeStep.h">
       <Filter>src\Rose\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Rose\EntryPoint.h">
-      <Filter>src\Rose</Filter>
+    <ClInclude Include="src\Rose\Core\Window.h">
+      <Filter>src\Rose\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Rose\Events\ApplicationEvent.h">
       <Filter>src\Rose\Events</Filter>
@@ -113,24 +137,6 @@
     </ClInclude>
     <ClInclude Include="src\Rose\ImGui\ImGuiLayer.h">
       <Filter>src\Rose\ImGui</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Rose\Input.h">
-      <Filter>src\Rose</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Rose\KeyCodes.h">
-      <Filter>src\Rose</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Rose\Layer.h">
-      <Filter>src\Rose</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Rose\LayerStack.h">
-      <Filter>src\Rose</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Rose\Log.h">
-      <Filter>src\Rose</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Rose\MouseButtonCodes.h">
-      <Filter>src\Rose</Filter>
     </ClInclude>
     <ClInclude Include="src\Rose\Renderer\Buffer.h">
       <Filter>src\Rose\Renderer</Filter>
@@ -155,9 +161,6 @@
     </ClInclude>
     <ClInclude Include="src\Rose\Renderer\VertexArray.h">
       <Filter>src\Rose\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Rose\Window.h">
-      <Filter>src\Rose</Filter>
     </ClInclude>
     <ClInclude Include="src\rspch.h">
       <Filter>src</Filter>
@@ -1419,7 +1422,7 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
-    <ClInclude Include="src\Rose\Camera\CameraController.h" />
+    <ClInclude Include="src\Rose\Renderer\Renderer2D.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
@@ -1446,26 +1449,29 @@
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
       <Filter>src\Platform\Windows</Filter>
     </ClCompile>
-    <ClCompile Include="src\Rose\Application.cpp">
-      <Filter>src\Rose</Filter>
-    </ClCompile>
     <ClCompile Include="src\Rose\Camera\Camera.cpp">
       <Filter>src\Rose\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Rose\Camera\CameraController.cpp">
+      <Filter>src\Rose\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Rose\Core\Application.cpp">
+      <Filter>src\Rose\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Rose\Core\Layer.cpp">
+      <Filter>src\Rose\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Rose\Core\LayerStack.cpp">
+      <Filter>src\Rose\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Rose\Core\Log.cpp">
+      <Filter>src\Rose\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\Rose\ImGui\ImGuiBuild.cpp">
       <Filter>src\Rose\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="src\Rose\ImGui\ImGuiLayer.cpp">
       <Filter>src\Rose\ImGui</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Rose\Layer.cpp">
-      <Filter>src\Rose</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Rose\LayerStack.cpp">
-      <Filter>src\Rose</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Rose\Log.cpp">
-      <Filter>src\Rose</Filter>
     </ClCompile>
     <ClCompile Include="src\Rose\Renderer\Buffer.cpp">
       <Filter>src\Rose\Renderer</Filter>
@@ -1494,6 +1500,6 @@
     <ClCompile Include="vendor\STB\stb_image.cpp">
       <Filter>vendor\STB</Filter>
     </ClCompile>
-    <ClCompile Include="src\Rose\Camera\CameraController.cpp" />
+    <ClCompile Include="src\Rose\Renderer\Renderer2D.cpp" />
   </ItemGroup>
 </Project>

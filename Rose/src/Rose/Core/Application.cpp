@@ -1,7 +1,7 @@
 #include "rspch.h"
 #include "Application.h"
 
-#include "Rose/Log.h"
+#include "Rose/Core/Log.h"
 
 #include "Input.h"
 
@@ -51,6 +51,7 @@ namespace Rose {
 	{
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
+		dispatcher.Dispatch<WindowResizeEvent>(BIND_EVENT_FN(OnWindowResize));
 
 		//RS_CORE_TRACE("{0}", e.ToString());
 
@@ -71,14 +72,14 @@ namespace Rose {
 			float time = (float)glfwGetTime();
 			TimeStep timeStep(time - m_LastFrameTime);
 			m_LastFrameTime = time;
-			for (Layer* layer : m_LayerStack)
-				layer->OnUpdate(timeStep);
-
+			if (!m_Minimized) {
+				for (Layer* layer : m_LayerStack)
+					layer->OnUpdate(timeStep);
+			}
 			m_ImGuiLayer->Begin();
 			for (Layer* layer : m_LayerStack)
 				layer->OnImGuiRender();
 			m_ImGuiLayer->End();
-
 			m_Window->OnUpdate();
 		}
 	}
@@ -87,6 +88,21 @@ namespace Rose {
 	{
 		m_Running = false;
 		return true;
+	}
+	bool Application::OnWindowResize(WindowResizeEvent& e) 
+	{
+		//处理最小化
+		if (e.GetHeight() == 0 || e.GetWidth() == 0) {
+			m_Minimized = true;
+			return false;
+		}
+		m_Minimized = false;
+		uint32_t pixelWidth;
+		uint32_t pixelHeight;
+		m_Window->GetFramebufferSize(pixelWidth, pixelHeight);
+		Renderer::OnWindowResize(pixelWidth, pixelHeight);
+
+		return false;
 	}
 
 }
