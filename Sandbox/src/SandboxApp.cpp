@@ -6,6 +6,9 @@
 #include "Platform/OpenGL/OpenGLShader.h"
 #include <glm/gtc/type_ptr.hpp>
 #include <Rose/Core/EntryPoint.h>
+<<<<<<< HEAD
+#include "GameLayer.h"
+=======
 
 class ExampleLayer : public Rose::Layer
 {
@@ -210,6 +213,7 @@ private:
 
 	Rose::Window* m_Window = &Rose::Application::Get().GetWindow();
 };
+>>>>>>> 2bd6f8eca5e005fa2018892ff22c4880e641969c
 
 class Sandbox : public Rose::Application
 {
@@ -217,7 +221,11 @@ public:
 	Sandbox()
 	{
 		//PushLayer(new ExampleLayer());
+<<<<<<< HEAD
+		PushLayer(new GameLayer());
+=======
 		PushLayer(new SandBox2D());
+>>>>>>> 2bd6f8eca5e005fa2018892ff22c4880e641969c
 		
 	}
 

@@ -59,7 +59,10 @@ void SandBox2D::OnUpdate(Rose::TimeStep timestep)
 	}*/
 	Rose::Renderer2D::DrawQuad({ 0.0f,0.0f }, { 0.8f,0.8f }, { 0.8f,0.2f,0.3f,1.0f });
 	Rose::Renderer2D::DrawQuad({ 1.0f,0.0f }, { 1.5f,1.2f }, { 0.2f,0.8f,0.7f,1.0f });
+<<<<<<< HEAD
+=======
 	Rose::Renderer2D::DrawQuad({ 0.0f,0.0f,-0.1f }, { 5.0f,5.0f }, m_BackGroundTexture);
+>>>>>>> 2bd6f8eca5e005fa2018892ff22c4880e641969c
 	Rose::Renderer2D::EndScene();
 
 }
