@@ -16,6 +16,7 @@ namespace Rose {
 		virtual uint32_t GetHeight() const override { return m_Height; }
 		virtual std::string GetPath() const override { return m_Path; }
 		virtual void SetData(void* data, uint32_t size) override;
+		virtual bool operator==(const Texture& other)const override;
 	private:
 		std::string m_Path;
 		uint32_t m_Width, m_Height;

@@ -150,6 +150,9 @@
     <ClInclude Include="src\Rose\Renderer\Renderer.h">
       <Filter>src\Rose\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\Rose\Renderer\Renderer2D.h">
+      <Filter>src\Rose\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Rose\Renderer\RendererAPI.h">
       <Filter>src\Rose\Renderer</Filter>
     </ClInclude>
@@ -1422,7 +1425,6 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
-    <ClInclude Include="src\Rose\Renderer\Renderer2D.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
@@ -1432,9 +1434,6 @@
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp">
-      <Filter>src\Platform\OpenGL</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLTexture.cpp">
@@ -1482,6 +1481,9 @@
     <ClCompile Include="src\Rose\Renderer\Renderer.cpp">
       <Filter>src\Rose\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="src\Rose\Renderer\Renderer2D.cpp">
+      <Filter>src\Rose\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\Rose\Renderer\RendererAPI.cpp">
       <Filter>src\Rose\Renderer</Filter>
     </ClCompile>
@@ -1500,6 +1502,7 @@
     <ClCompile Include="vendor\STB\stb_image.cpp">
       <Filter>vendor\STB</Filter>
     </ClCompile>
-    <ClCompile Include="src\Rose\Renderer\Renderer2D.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp" />
+    <ClCompile Include="src\Rose\Renderer\GraphicsContext.cpp" />
   </ItemGroup>
 </Project>

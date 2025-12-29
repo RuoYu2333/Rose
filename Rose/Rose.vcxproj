@@ -621,6 +621,7 @@
     <ClCompile Include="src\Rose\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Rose\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Rose\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Rose\Renderer\GraphicsContext.cpp" />
     <ClCompile Include="src\Rose\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\Rose\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Rose\Renderer\Renderer2D.cpp" />

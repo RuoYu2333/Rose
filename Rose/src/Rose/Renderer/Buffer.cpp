@@ -1,40 +1,46 @@
 #include "rspch.h"
-#include "Buffer.h"
-#include "Renderer.h"
+#include "Rose/Renderer/Buffer.h"
+
+#include "Rose/Renderer/Renderer.h"
+
 #include "Platform/OpenGL/OpenGLBuffer.h"
 
+namespace Rose {
 
-namespace Rose
-{
-	VertexBuffer* VertexBuffer::Create(float* vertices, uint32_t size)
+	Ref<VertexBuffer> VertexBuffer::Create(uint32_t size)
 	{
 		switch (Renderer::GetAPI())
 		{
-		default:
-			break;
-		case RendererAPI::API::None:
-			RS_CORE_ASSERT(false, "RendererAPI::None is currently not supported!");
-			return nullptr;
-		case RendererAPI::API::OpenGL:
-			return new OpenGLVertexBuffer(vertices, size);
+		case RendererAPI::API::None:    RS_CORE_ASSERT(false, "RendererAPI::None is currently not supported!"); return nullptr;
+		case RendererAPI::API::OpenGL:  return CreateRef<OpenGLVertexBuffer>(size);
 		}
+
 		RS_CORE_ASSERT(false, "Unknown RendererAPI!");
 		return nullptr;
 	}
-	IndexBuffer* IndexBuffer::Create(uint32_t* indices, uint32_t size)
+
+	Ref<VertexBuffer> VertexBuffer::Create(float* vertices, uint32_t size)
 	{
 		switch (Renderer::GetAPI())
 		{
-		default:
-			break;
-		case RendererAPI::API::None:
-			RS_CORE_ASSERT(false, "RendererAPI::API::None is currently not supported!");
-			return nullptr;
-		case RendererAPI::API::OpenGL:
-			return new OpenGLIndexBuffer(indices,size);
-			return nullptr;
+		case RendererAPI::API::None:    RS_CORE_ASSERT(false, "RendererAPI::None is currently not supported!"); return nullptr;
+		case RendererAPI::API::OpenGL:  return CreateRef<OpenGLVertexBuffer>(vertices, size);
 		}
-		RS_CORE_ASSERT(false, "Unknown RendererAPI::API!");
+
+		RS_CORE_ASSERT(false, "Unknown RendererAPI!");
 		return nullptr;
-	};
+	}
+
+	Ref<IndexBuffer> IndexBuffer::Create(uint32_t* indices, uint32_t size)
+	{
+		switch (Renderer::GetAPI())
+		{
+		case RendererAPI::API::None:    RS_CORE_ASSERT(false, "RendererAPI::None is currently not supported!"); return nullptr;
+		case RendererAPI::API::OpenGL:  return CreateRef<OpenGLIndexBuffer>(indices, size);
+		}
+
+		RS_CORE_ASSERT(false, "Unknown RendererAPI!");
+		return nullptr;
+	}
+
 }
