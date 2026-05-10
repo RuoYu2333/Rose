@@ -83,18 +83,41 @@ project "Rose"
         runtime "Debug"
         buildoptions "/MDd"
         symbols "on"
+        disablewarnings { 
+        "6294", 
+        "26495",
+        "26498" ,
+        "26800",
+        "4005"
+    }
+    	linkoptions { "/IGNORE:4006","/IGNORE:4098"}
 
     filter "configurations:Release"
         defines "RS_RELEASE"
         runtime "Release"
         buildoptions "/MD"
         optimize "on"
-
+        disablewarnings { 
+        "6294", 
+        "26495",
+        "26498" ,
+        "26800",
+        "4005"
+    }
+        linkoptions { "/IGNORE:4006","/IGNORE:4098" }
     filter "configurations:Dist"
         defines "RS_DIST"
         runtime "Release"
         buildoptions "/MD"
         optimize "on"
+        disablewarnings { 
+        "6294", 
+        "26495",
+        "26498" ,
+        "26800",
+        "4005"
+    }
+    	linkoptions { "/IGNORE:4006","/IGNORE:4098" }
 
 project "Sandbox"
     location "Sandbox"
@@ -136,16 +159,40 @@ project "Sandbox"
         runtime "Debug"
         buildoptions "/MDd"
         symbols "on"
+        disablewarnings { 
+        "6294", 
+        "26495",
+        "26498" ,
+        "26800",
+        "4005"
+    }
+    	linkoptions { "/IGNORE:4006","/IGNORE:4098" }
 
     filter "configurations:Release"
         defines "RS_RELEASE"
         runtime "Release"
         buildoptions "/MD"
         optimize "on"
+        disablewarnings { 
+        "6294", 
+        "26495",
+        "26498" ,
+        "26800",
+        "4005"
+    }
+        linkoptions { "/IGNORE:4006","/IGNORE:4098" }
 
     filter "configurations:Dist"
         defines "RS_DIST"
         runtime "Release"
         buildoptions "/MD"
         optimize "on"
+        disablewarnings { 
+        "6294", 
+        "26495",
+        "26498" ,
+        "26800",
+        "4005"
+    }
+     	linkoptions { "/IGNORE:4006","/IGNORE:4098"}       
  

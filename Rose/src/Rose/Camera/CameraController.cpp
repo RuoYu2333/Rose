@@ -4,8 +4,10 @@
 
 namespace Rose {
 	CameraController::CameraController(float aspectRatio, bool rotation)
-		:m_AspectRatio(aspectRatio), m_Camera(-m_AspectRatio * m_ZoomLevel, m_AspectRatio* m_ZoomLevel,
-			-m_ZoomLevel, m_ZoomLevel), m_Rotation(rotation)
+		: m_AspectRatio(aspectRatio), 
+		  m_CameraBounds({ -m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel }),
+		  m_Camera(-m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel), 
+		  m_Rotation(rotation)
 	{
 	}
 	void CameraController::OnUpdate(TimeStep deltaTime)
@@ -47,11 +49,17 @@ namespace Rose {
 		dispatcher.Dispatch<MouseScrolledEvent>(RS_BIND_EVENT_FN(CameraController::OnMouseScrolled));
 		dispatcher.Dispatch<WindowResizeEvent>(RS_BIND_EVENT_FN(CameraController::OnWindowResized));
 	}
+	void CameraController::CalculateView()
+	{
+		m_CameraBounds = { -m_AspectRatio * m_ZoomLevel,m_AspectRatio * m_ZoomLevel,-m_ZoomLevel,m_ZoomLevel };
+		m_Camera.SetProjection(m_CameraBounds.left, m_CameraBounds.right, m_CameraBounds.bottom, m_CameraBounds.top);
+	}
+	
 	bool CameraController::OnMouseScrolled(MouseScrolledEvent& e)
 	{
 		m_ZoomLevel -= e.GetYOffset() * 0.25f;
 		m_ZoomLevel = std::max(m_ZoomLevel, 0.25f);
-		Resize(m_AspectRatio * 2.0f * m_ZoomLevel, 2.0f * m_ZoomLevel);
+		CalculateView();
 		return false;
 	}
 	bool CameraController::OnWindowResized(WindowResizeEvent& e)
@@ -62,7 +70,6 @@ namespace Rose {
 	void CameraController::Resize(float width, float height)
 	{
 		m_AspectRatio = width / height;
-		m_Camera.SetProjection(-m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel,
-			-m_ZoomLevel, m_ZoomLevel);
+		CalculateView();
 	}
 }

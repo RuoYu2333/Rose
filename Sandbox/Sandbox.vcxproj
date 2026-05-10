@@ -78,6 +78,7 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
+      <DisableSpecificWarnings>6294;26495;26498;26800;4005;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <PreprocessorDefinitions>RS_PLATFORM_WINDOWS;RS_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\Rose\vendor\spdlog\include;..\Rose\src;..\Rose\vendor\glm;..\Rose\vendor;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
@@ -90,12 +91,14 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalOptions>/IGNORE:4006 /IGNORE:4098 %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
+      <DisableSpecificWarnings>6294;26495;26498;26800;4005;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <PreprocessorDefinitions>RS_PLATFORM_WINDOWS;RS_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\Rose\vendor\spdlog\include;..\Rose\src;..\Rose\vendor\glm;..\Rose\vendor;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
@@ -112,12 +115,14 @@
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalOptions>/IGNORE:4006 /IGNORE:4098 %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
+      <DisableSpecificWarnings>6294;26495;26498;26800;4005;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <PreprocessorDefinitions>RS_PLATFORM_WINDOWS;RS_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\Rose\vendor\spdlog\include;..\Rose\src;..\Rose\vendor\glm;..\Rose\vendor;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
@@ -134,15 +139,20 @@
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalOptions>/IGNORE:4006 /IGNORE:4098 %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\ExampleLayer.h" />
+    <ClInclude Include="src\ParticleSystem.h" />
+    <ClInclude Include="src\Random.h" />
     <ClInclude Include="src\SandBox2D.h" />
     <ClInclude Include="src\Vars.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\ExampleLayer.cpp" />
+    <ClCompile Include="src\ParticleSystem.cpp" />
+    <ClCompile Include="src\Random.cpp" />
     <ClCompile Include="src\SandBox2D.cpp" />
     <ClCompile Include="src\SandboxApp.cpp" />
   </ItemGroup>

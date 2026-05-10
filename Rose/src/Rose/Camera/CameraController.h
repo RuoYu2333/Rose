@@ -9,6 +9,11 @@
 #include "Rose/Core/TimeStep.h"
 
 namespace Rose {
+	struct CameraBounds {
+		float left, right, bottom, top;
+		float GetWidth() const { return right - left; }
+		float GetHeight() const { return top - bottom; }
+	};
 	class CameraController {
 	public:
 		CameraController(float aspectRatio, bool rotation = false);
@@ -18,15 +23,20 @@ namespace Rose {
 		inline class Camera& GetCamera() { return m_Camera; }
 		inline const class Camera& GetCamera() const { return m_Camera; }
 		void Resize(float width, float height);
-		void SetZoomLevel(float level) { m_ZoomLevel = level; }
+		void SetZoomLevel(float level) { m_ZoomLevel = level; CalculateView(); }
 		void GetZoomLevel(float level)  { m_ZoomLevel = level; }
+		const CameraBounds& GetCameraBounds() const { return m_CameraBounds; }
 	private:
+		void CalculateView();
+
 		bool OnMouseScrolled(class MouseScrolledEvent& e);
 		bool OnWindowResized(class WindowResizeEvent& e);
 	private:
 		float m_AspectRatio;
 		float m_ZoomLevel = 1.0f;
+		CameraBounds m_CameraBounds;
 		Camera m_Camera;
+		
 		bool m_Rotation;
 		glm::vec3 m_CameraPosition = { 0.0f,0.0f,0.0f };
 		float m_CameraRotation = 0.0f;

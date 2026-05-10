@@ -76,6 +76,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>rspch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
+      <DisableSpecificWarnings>6294;26495;26498;26800;4005;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;RS_PLATFORM_WINDOWS;RS_BUILD_DLL;_WINDLL;GLFW_INCLUDE_NONE;RS_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;vendor\STB;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
@@ -91,6 +92,7 @@
     </Link>
     <Lib>
       <AdditionalDependencies>opengl32.lib;dwmapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalOptions>/IGNORE:4006 /IGNORE:4098 %(AdditionalOptions)</AdditionalOptions>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -98,6 +100,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>rspch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
+      <DisableSpecificWarnings>6294;26495;26498;26800;4005;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;RS_PLATFORM_WINDOWS;RS_BUILD_DLL;_WINDLL;GLFW_INCLUDE_NONE;RS_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;vendor\STB;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
@@ -117,6 +120,7 @@
     </Link>
     <Lib>
       <AdditionalDependencies>opengl32.lib;dwmapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalOptions>/IGNORE:4006 /IGNORE:4098 %(AdditionalOptions)</AdditionalOptions>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
@@ -124,6 +128,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>rspch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
+      <DisableSpecificWarnings>6294;26495;26498;26800;4005;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;RS_PLATFORM_WINDOWS;RS_BUILD_DLL;_WINDLL;GLFW_INCLUDE_NONE;RS_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;vendor\STB;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
@@ -143,6 +148,7 @@
     </Link>
     <Lib>
       <AdditionalDependencies>opengl32.lib;dwmapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalOptions>/IGNORE:4006 /IGNORE:4098 %(AdditionalOptions)</AdditionalOptions>
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -180,6 +186,7 @@
     <ClInclude Include="src\Rose\Renderer\Renderer2D.h" />
     <ClInclude Include="src\Rose\Renderer\RendererAPI.h" />
     <ClInclude Include="src\Rose\Renderer\Shader.h" />
+    <ClInclude Include="src\Rose\Renderer\SubTexture2D.h" />
     <ClInclude Include="src\Rose\Renderer\Texture.h" />
     <ClInclude Include="src\Rose\Renderer\VertexArray.h" />
     <ClInclude Include="src\rspch.h" />
@@ -627,6 +634,7 @@
     <ClCompile Include="src\Rose\Renderer\Renderer2D.cpp" />
     <ClCompile Include="src\Rose\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\Rose\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Rose\Renderer\SubTexture2D.cpp" />
     <ClCompile Include="src\Rose\Renderer\Texture.cpp" />
     <ClCompile Include="src\Rose\Renderer\VertexArray.cpp" />
     <ClCompile Include="src\rspch.cpp">
