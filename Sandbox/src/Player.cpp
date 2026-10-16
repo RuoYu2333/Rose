@@ -32,12 +32,13 @@ void Player::LoadAssets()
 void Player::OnUpdate(Rose::TimeStep ts)
 {
 	m_Time += ts;
+	const float deltaTime = static_cast<float>(ts);
 
 	if (Input::IsKeyPressed(RS_KEY_SPACE))
 	{
-		m_Velocity.y += m_EnginePower;
+		m_Velocity.y += m_EnginePower * deltaTime;
 		if (m_Velocity.y < 0.0f)
-			m_Velocity.y += m_EnginePower * 2.0f;
+			m_Velocity.y += m_EnginePower * 2.0f * deltaTime;
 
 		// Flames
 		glm::vec2 emissionPoint = { 0.0f, -0.6f };
@@ -49,11 +50,11 @@ void Player::OnUpdate(Rose::TimeStep ts)
 	}
 	else
 	{
-		m_Velocity.y -= m_Gravity;
+		m_Velocity.y -= m_Gravity * deltaTime;
 	}
 
-	m_Velocity.y = glm::clamp(m_Velocity.y, -20.0f, 20.0f);
-	m_Position += m_Velocity * (float)ts;
+	m_Velocity.y = glm::clamp(m_Velocity.y, -12.0f, 12.0f);
+	m_Position += m_Velocity * deltaTime;
 
 	// Particles
 	if (m_Time > m_SmokeNextEmitTime)

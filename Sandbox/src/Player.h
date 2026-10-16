@@ -21,7 +21,7 @@ public:
 
 	uint32_t GetTotalScore() const {
 		// 返回基础分数 + 位置奖励
-		return m_BaseScore + (uint32_t)(m_Position.x + 10.0f) / 10.0f;
+		return m_BaseScore + static_cast<uint32_t>((m_Position.x + 10.0f) / 10.0f);
 	}
 	void SetBaseScore(uint32_t score) { m_BaseScore = score; }
 	uint32_t GetBaseScore() const { return m_BaseScore; }
@@ -34,13 +34,13 @@ public:
 	void ResetPositionOnly() {
 		// 只重置位置，用于碰撞后
 		m_Position = { -10.0f, 0.0f };
-		m_Velocity = { 5.0f, 0.0f };
+		m_Velocity = { 4.5f, 0.0f };
 	}
 
 	void ResetCompletely() {
 		// 完全重置
 		m_Position = { -10.0f, 0.0f };
-		m_Velocity = { 5.0f, 0.0f };
+		m_Velocity = { 4.5f, 0.0f };
 		m_Health = m_MaxHealth;
 		m_Alive = true;
 		m_BaseScore = 0;
@@ -49,7 +49,7 @@ public:
 	void ResetForRetry() {
 		// 用于重新尝试
 		m_Position = { -10.0f, 0.0f };
-		m_Velocity = { 5.0f, 0.0f };
+		m_Velocity = { 4.5f, 0.0f };
 		m_Health = m_MaxHealth;
 		m_Alive = true;
 		// 不重置基础分数
@@ -75,10 +75,10 @@ public:
 
 private:
 	glm::vec2 m_Position = { -10.0f, 0.0f };
-	glm::vec2 m_Velocity = { 5.0f, 0.0f };
+	glm::vec2 m_Velocity = { 4.5f, 0.0f };
 
-	float m_EnginePower = 0.5f;
-	float m_Gravity = 0.4f;
+	float m_EnginePower = 12.0f;
+	float m_Gravity = 8.0f;
 	float m_Health = 100.0f;
 	float m_MaxHealth = 100.0f;
 	bool m_Alive = true;

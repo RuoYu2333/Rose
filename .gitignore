@@ -5,3 +5,7 @@ bin-int/
 .vscode/
 #FFiles
 *.user
+
+# Documentation & dev instructions (excluded from sync)
+/Rose引擎面试题总结.md
+.github/copilot-instructions.md

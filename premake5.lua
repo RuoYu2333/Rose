@@ -19,7 +19,7 @@ IncludeDir["stb_image"] = "Rose/vendor/STB"
 
 include "Rose/vendor/GLFW"
 include "Rose/vendor/Glad"
-include "Rose/vendor/imgui"
+include "Rose/vendor/imgui-premake.lua"
 
 
 project "Rose"  
@@ -28,6 +28,7 @@ project "Rose"
     language "C++"
     cppdialect "C++20"
     staticruntime "on"
+    buildoptions "/utf-8"
     
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -102,6 +103,7 @@ project "Sandbox"
     language "C++"
     cppdialect "C++20"
     staticruntime "on"
+    buildoptions "/utf-8"
 
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")

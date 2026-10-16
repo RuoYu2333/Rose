@@ -90,8 +90,7 @@ namespace Rose {
 
 	void ImGuiLayer::OnImGuiRender()
 	{
-		static bool show = true;
-		ImGui::ShowDemoWindow(&show);
+		// Client layers own their HUD. Do not render the ImGui demo over games.
 	}
 
 }

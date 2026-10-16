@@ -21,6 +21,7 @@ void GameLayer::OnAttach()
 	m_Level.Init();
 
 	ImGuiIO io = ImGui::GetIO();
+	io.Fonts->AddFontDefault();
 	m_Font = io.Fonts->AddFontFromFileTTF("assets/fonts/OpenSans-Regular.ttf", 120.0f);
 }
 
@@ -169,5 +170,5 @@ void GameLayer::CreateCamera(uint32_t width, uint32_t height)
 	float top = camWidth;
 	float left = bottom * aspectRatio;
 	float right = top * aspectRatio;
-	m_Camera = CreateScope<Camera>(left, right, bottom, top);
+	m_Camera = Rose::CreateScope<Rose::Camera>(left, right, bottom, top);
 }
